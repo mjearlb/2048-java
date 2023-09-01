@@ -23,7 +23,7 @@ public class Game {
         this.board = new char[4][4];
         for (int i = 0; i < this.board.length; i++) {
             for (int j = 0; j < this.board[i].length; j++) {
-                this.board[i][j] = " ";
+                this.board[i][j] = ' ';
             } // for
         } // for
         printBoard();
@@ -37,6 +37,7 @@ public class Game {
             for (int j = 0; j < this.board[i].length; j++) {
                 System.out.print(this.board[i][j]);
             } // for
+            System.out.println();
         } // for
     } // printBoard
 
