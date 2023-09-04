@@ -26,8 +26,8 @@ public class Game {
                 this.board[i][j] = "   ";
             } // for
         } // for
-        this.board[0][1] = " 2 ";
-        this.board[1][3] = " 2 ";
+        this.board[(int) (Math.random() * 4)][(int) (Math.random() * 4)] = " 2 ";
+        this.board[(int) (Math.random() * 4)][(int) (Math.random() * 4)] = " 2 ";
         printBoard();
     } // startGame
 
