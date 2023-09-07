@@ -67,23 +67,30 @@ public class Game {
         switch (input) {
         case "L" :
             slideCells(0, 4, 0, 4, 1, 1);
+            break;
+        case "R":
+            slideCells(0, 4, 3, -1, 1, -1);
+            break;
         } // switch
     } // slideHandler
 
+    /**
+     * Slides the cells.
+     */
     private void slideCells(int colStart, int colFin, int rowStart,
         int rowFin, int colInc, int rowInc) {
-        int numFound = colStart;
-        for (int i = colStart; i < colFin; i += colInc) {
-            for (int j = rowStart; j < rowFin; j += rowInc) {
-                if (!(this.board[i][j] == 0)) {
+        int numFound = rowStart;
+        for (int i = colStart; i != colFin; i += colInc) {
+            for (int j = rowStart; j != rowFin; j += rowInc) {
+                if (this.board[i][j] != 0) {
                     this.board[i][numFound] = this.board[i][j];
                     if (j != numFound) {
                         this.board[i][j] = 0;
                     } // if
-                    numFound++;
+                    numFound += rowInc;
                 } // if
             } // for
-            numFound = 0;
+            numFound = rowStart;
         } // for
         addRandom();
         printBoard();
