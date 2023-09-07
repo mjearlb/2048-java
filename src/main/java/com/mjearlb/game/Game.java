@@ -63,6 +63,11 @@ public class Game {
         System.out.flush();
     } // clearScreen
 
+    /**
+     * Handles the input from the driver program.
+     *
+     * @param input the input from the driver program.
+     */
     public void slideHandler(String input) {
         switch (input) {
         case "L" :
@@ -76,6 +81,13 @@ public class Game {
 
     /**
      * Slides the cells.
+     *
+     * @param rowStart the index that the row loop will start.
+     * @param rowFin the index that the row loop will end.
+     * @param colStart the index that the col loop will start.
+     * @param colFin the index that the col loop will end.
+     * @param rowInc the amount that the row loop will increment. Will be either 1 or -1.
+     * @param colInc the amount that the col loop will increment. Will be either 1 or -1.
      */
     private void slideCells(int rowStart, int rowFin, int colStart,
         int colFin, int rowInc, int colInc) {
