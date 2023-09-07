@@ -77,20 +77,20 @@ public class Game {
     /**
      * Slides the cells.
      */
-    private void slideCells(int colStart, int colFin, int rowStart,
-        int rowFin, int colInc, int rowInc) {
-        int numFound = rowStart;
-        for (int i = colStart; i != colFin; i += colInc) {
-            for (int j = rowStart; j != rowFin; j += rowInc) {
+    private void slideCells(int rowStart, int rowFin, int colStart,
+        int colFin, int rowInc, int colInc) {
+        int numFound = colStart;
+        for (int i = rowStart; i != rowFin; i += rowInc) {
+            for (int j = colStart; j != colFin; j += colInc) {
                 if (this.board[i][j] != 0) {
                     this.board[i][numFound] = this.board[i][j];
                     if (j != numFound) {
                         this.board[i][j] = 0;
                     } // if
-                    numFound += rowInc;
+                    numFound += colInc;
                 } // if
             } // for
-            numFound = rowStart;
+            numFound = colStart;
         } // for
         addRandom();
         printBoard();
@@ -100,7 +100,8 @@ public class Game {
      * Adds a random block to the board in an unoccupied spot.
      */
     private void addRandom() {
-        System.out.println("addRandom(): I do nothing!");
+        int col = (int) (Math.random() * 4);
+        int row = (int) (Math.random() * 4);
     } // addRandom
 
 } // Game
