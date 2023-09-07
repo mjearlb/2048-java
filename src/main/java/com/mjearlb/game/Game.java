@@ -71,20 +71,22 @@ public class Game {
     public void slideHandler(String input) {
         switch (input) {
         case "L" :
-            slideCells(0, 4, 0, 4, 1, 1);
+            slideCellsHor(0, 4, 0, 4, 1, 1);
             break;
         case "R":
-            slideCells(0, 4, 3, -1, 1, -1);
+            slideCellsHor(0, 4, 3, -1, 1, -1);
             break;
         case "D":
+            slideCellsVert(3, -1, 0, 4, -1, 1);
             break;
         case "U":
+            slideCellsVert(0, 4, 0, 4, 1, 1);
             break;
         } // switch
     } // slideHandler
 
     /**
-     * Slides the cells.
+     * Slides the cells left or right.
      *
      * @param rowStart the index that the row loop will start.
      * @param rowFin the index that the row loop will end.
@@ -93,7 +95,7 @@ public class Game {
      * @param rowInc the amount that the row loop will increment. Will be either 1 or -1.
      * @param colInc the amount that the col loop will increment. Will be either 1 or -1.
      */
-    private void slideCells(int rowStart, int rowFin, int colStart,
+    private void slideCellsHor(int rowStart, int rowFin, int colStart,
         int colFin, int rowInc, int colInc) {
         int numFound = colStart;
         for (int i = rowStart; i != rowFin; i += rowInc) {
@@ -110,7 +112,37 @@ public class Game {
         } // for
         addRandom();
         printBoard();
-    } // slideCells
+    } // slideCellsHor
+
+    /**
+     * Slides the cells up or down.
+     *
+     * @param rowStart the index that the row loop will start.
+     * @param rowFin the index that the row loop will end.
+     * @param colStart the index that the col loop will start.
+     * @param colFin the index that the col loop will end.
+     * @param rowInc the amount that the row loop will increment. Will be either 1 or -1.
+     * @param colInc the amount that the col loop will increment. Will be either 1 or -1.
+     */
+    private void slideCellsVert(int rowStart, int rowFin, int colStart,
+        int colFin, int rowInc, int colInc) {
+        int numFound = rowStart;
+        for (int j = colStart; j != colFin; j += colInc) {
+            for (int i = rowStart; i != rowFin; i += rowInc) {
+                if (this.board[i][j] != 0) {
+                    this.board[numFound][j] = this.board[i][j];
+                    if (i != numFound) {
+                        this.board[i][j] = 0;
+                    } // if
+                    numFound += rowInc;
+                } // if
+            } // for
+            numFound = rowStart;
+        } // for
+        addRandom();
+        printBoard();
+    } // slideCellsVert
+
 
     /**
      * Adds a random block to the board in an unoccupied spot.
@@ -123,7 +155,7 @@ public class Game {
             col = (int) (Math.random() * 4);
         } // while
         int value = (Math.random() < 0.5) ? 2 : 4;
-        this.board[row][col] = value; // ((int) (Math.random() * 2) * 2);
+        this.board[row][col] = value;
     } // addRandom
 
 } // Game
