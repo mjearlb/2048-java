@@ -76,6 +76,10 @@ public class Game {
         case "R":
             slideCells(0, 4, 3, -1, 1, -1);
             break;
+        case "D":
+            break;
+        case "U":
+            break;
         } // switch
     } // slideHandler
 
@@ -112,8 +116,14 @@ public class Game {
      * Adds a random block to the board in an unoccupied spot.
      */
     private void addRandom() {
-        int col = (int) (Math.random() * 4);
         int row = (int) (Math.random() * 4);
+        int col = (int) (Math.random() * 4);
+        while (this.board[row][col] != 0) {
+            row = (int) (Math.random() * 4);
+            col = (int) (Math.random() * 4);
+        } // while
+        int value = (Math.random() < 0.5) ? 2 : 4;
+        this.board[row][col] = value; // ((int) (Math.random() * 2) * 2);
     } // addRandom
 
 } // Game
