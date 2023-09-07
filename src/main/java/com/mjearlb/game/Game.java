@@ -63,13 +63,18 @@ public class Game {
         System.out.flush();
     } // clearScreen
 
-    /**
-     * Slides all numbers to the direction selected.
-     */
-    public void slideCellsLeft() {
-        int numFound = 0;
-        for (int i = 0; i < this.board.length; i++) {
-            for (int j = 0; j < this.board[i].length; j++) {
+    public void slideHandler(String input) {
+        switch (input) {
+        case "L" :
+            slideCells(0, 4, 0, 4, 1, 1);
+        } // switch
+    } // slideHandler
+
+    private void slideCells(int colStart, int colFin, int rowStart,
+        int rowFin, int colInc, int rowInc) {
+        int numFound = colStart;
+        for (int i = colStart; i < colFin; i += colInc) {
+            for (int j = rowStart; j < rowFin; j += rowInc) {
                 if (!(this.board[i][j] == 0)) {
                     this.board[i][numFound] = this.board[i][j];
                     if (j != numFound) {
@@ -82,7 +87,7 @@ public class Game {
         } // for
         addRandom();
         printBoard();
-    } // slideCellsLeft
+    } // slideCells
 
     /**
      * Adds a random block to the board in an unoccupied spot.
