@@ -70,16 +70,16 @@ public class Game {
      */
     public void slideHandler(String input) {
         switch (input) {
-        case "L" :
+        case "A" :
             slideCellsHor(0, 4, 0, 4, 1, 1);
             break;
-        case "R":
+        case "D":
             slideCellsHor(0, 4, 3, -1, 1, -1);
             break;
-        case "D":
+        case "S":
             slideCellsVert(3, -1, 0, 4, -1, 1);
             break;
-        case "U":
+        case "W":
             slideCellsVert(0, 4, 0, 4, 1, 1);
             break;
         } // switch
