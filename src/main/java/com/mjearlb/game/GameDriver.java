@@ -1,12 +1,10 @@
 package com.mjearlb.game;
-
 import com.mjearlb.game.Game;
 
 import java.util.Scanner;
 
 /**
- * Hello world!
- *
+ * The driver program for my 2048 game. Uses {@code Game.java}. 
  */
 public class GameDriver {
 
