@@ -11,11 +11,12 @@ import java.util.Scanner;
 public class GameDriver {
 
     private static Scanner keyboard = new Scanner(System.in);
+    private static boolean playing = true; 
 
     public static void main(String[] args) {
         Game game = new Game();
 
-        while (true) {
+        while (playing) {
             game.slideHandler(keyboard.nextLine());
         } // while
     } // main
